@@ -14,27 +14,37 @@
     <title>Hello, world!</title>
 </head>
 <style>
-    *{
-        margin: 0;
-        padding: 0;
+    .contenair{
+        padding: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: grey;
+        font-size: 3rem;
+        color: black;
     }
-    div .container{
-        width:8000px;
-        /*margin: 20px;*/
+    img{
+        height: 300px;
     }
 </style>
 <body>
-
-
-<div class="container">
-
+<header>
 
     <?php require './components/nav.php'; ?>
-<!--    <?php //require './components/navigation.php'; ?>-->
 
-</div>
+</header>
+<div >
+    <div class="contenair">Site E-commerce</div>
+    <div style="display: flex; align-items: center; flex-direction: column; text-align: center">
 
+
+        <?php
+        session_start();
+        echo session_id();
+        ?>
 <?php
+
+
 
 
 if (array_key_exists('page', $_GET)) {
@@ -42,9 +52,11 @@ if (array_key_exists('page', $_GET)) {
         require './pages/panier.php';
     } elseif ($_GET['page'] === "deconnexion") {
         require './pages/deconnexion.php';
-    } else {
-        require './pages/Home.php';
+    }elseif ($_GET['page'] === "boutique") {
+        require './pages/boutique.php';
+    }else{
+        require './index.php';
     }
 }
-
 ?>
+</div>
